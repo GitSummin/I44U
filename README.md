@@ -84,7 +84,7 @@ python app.py
 ```
 2. 웹 브라우저를 열고 http://localhost:5000 에 접속합니다.
 
-# 스크린샷 및 데모
+## 스크린샷 및 데모
 
 ![image](https://github.com/GitSummin/I44U/assets/121507209/ecc900bf-f8de-432d-94d4-e866fa666731)
 ![image](https://github.com/GitSummin/I44U/assets/121507209/569cca3a-8b0a-405e-bb80-4179cfacc9d5)
