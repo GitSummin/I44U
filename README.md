@@ -47,6 +47,7 @@ project/
 │   ├── team_recruitment.html
 │   ├── team_recruitment_detail.html
 │   └── app.py
+```
 
 ## 설치 및 실행 방법
 ### 사전 준비
