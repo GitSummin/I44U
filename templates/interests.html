@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Interests</title>
+</head>
+<body>
+    <h1>My Interests</h1>
+
+    <h2>관심 있는 공모전</h2>
+    <ul>
+        {% for contest in contests %}
+        <li>
+            <h3>{{ contest.name }}</h3>
+            <p><strong>주최:</strong> {{ contest.host }}</p>
+            <p><strong>주관:</strong> {{ contest.organizer }}</p>
+            <p><strong>접수기간:</strong> {{ contest.date }}</p>
+            <p><strong>분야:</strong> {{ contest.type }}</p>
+            <p><strong>응모대상:</strong> {{ contest.target }}</p>
+            <p><strong>시상내역:</strong> {{ contest.award }}</p>
+            <!-- 이미지 표시 -->
+            {% if contest.image %}
+                <img src="{{ url_for('static', filename=contest.image) }}" width="300" height="200" alt="Contest Image">
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>관심 있는 대외활동</h2>
+    <ul>
+        {% for activity in activities %}
+        <li>
+            <h3>{{ activity.name }}</h3>
+            <p><strong>주최:</strong> {{ activity.host }}</p>
+            <p><strong>주관:</strong> {{ activity.organizer }}</p>
+            <p><strong>접수기간:</strong> {{ activity.date }}</p>
+            <p><strong>분야:</strong> {{ activity.type }}</p>
+            <p><strong>응모대상:</strong> {{ activity.target }}</p>
+            <p><strong>혜택:</strong> {{ activity.profit }}</p>
+            <!-- 이미지 표시 -->
+            {% if activity.image %}
+                <img src="{{ url_for('static', filename=activity.image) }}" width="300" height="200" alt="Activity Image">
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 프로필</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .container a{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .profile-info {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .link {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 16px;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .link:hover {
+            background-color: #1e78c6;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-200 py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <div class="flex items-center">
+                <h1 class="text-xl font-bold mr-4"><a href="/dashboard" class="text-4xl md:text-5xl">I44U</a></h1>
+                <span class="mr-8">information for you</span>
+            </div>
+
+            <!-- 검색 창 -->
+            <div class="flex items-center space-x-8">
+                <form action="/search_results" method="GET" class="flex items-center ml-auto">
+                    <label for="activity_type" class="mr-2">검색 필터:</label>
+                    <select id="activity_type" name="activity_type" class="mr-4">
+                        <option value="">-- All Activities --</option>
+                        <option value="Contest">공모전</option>
+                        <option value="Activity">대외활동</option>
+                        <option value="Career">취업/인턴</option>
+                        <option value="Campus">교내활동</option>
+                    </select>
+                    <input type="text" id="activity_name" name="activity_name" placeholder="검색" class="p-2 border border-blue-300 rounded">
+                </form>
+
+                <a href="/profile" class="mt-2 font-bold hover:text-blue-700" style="color: white;">나의 페이지</a>
+                <a href="/favorites" class="mt-2 font-bold hover:text-blue-700" style="color: white;">즐겨찾기</a>
+                <a href="/portfolio" class="mt-2 font-bold hover:text-blue-700" style="color: white;">나의 포트폴리오</a>
+                <a href="/logout" class="mt-2 font-bold hover:text-blue-700" style="color: white;">로그아웃</a>
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="container a mx-auto mt-8">
+        <div class="max-w-lg mx-auto profile-info">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Birthdate:</strong> {{ user.birthdate }}</p>
+            <p><strong>Gender:</strong> {{ user.gender }}</p>
+            <p><strong>School:</strong> {{ user.school }}</p>
+            <p><strong>Grade:</strong> {{ user.grade }}</p>
+            <p><strong>Department:</strong> {{ user.department }}</p>
+            <p><strong>Activity Interest:</strong> {{ user.activity_interests }}</p>
+            <p><strong>Job Interest:</strong> {{ user.job_interests }}</p>
+            <p><strong>Past Activities:</strong> {{ user.past_activities }}</p>
+            <a href="{{ url_for('logout') }}" class="link">프로필 편집</a>
+            <a href="{{ url_for('logout') }}" class="link">즐겨찾기</a>
+            <a href="{{ url_for('logout') }}" class="link">포트폴리오</a>
+            <a href="{{ url_for('logout') }}" class="link">로그아웃</a>
+
+        </div>
+    </div>
+
+</body>
+</html>

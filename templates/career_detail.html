@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I44U</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container a{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .profile-info {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .link {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 16px;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .link:hover {
+            background-color: #1e78c6;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        header {
+            background-color: #0d68a3; /* 하늘색 계열 */
+        }
+        header .text-white {
+            color: #fff; /* 흰색 */
+        }
+        .bg-gray-200 {
+            background-color: #f7fafc; /* 연한 회색 계열 */
+        }
+        .card {
+            background-color: #fff; /* 흰색 */
+        }
+        .card:hover {
+            background-color: #f7fafc; /* 연한 회색 계열 */
+        }
+        .bg-blue-200 {
+            background-color: #4a90e2; /* 하늘색 계열 */
+        }
+        .bg-blue-200:hover {
+            background-color: #1e78c6; /* 진한 하늘색 계열 */
+        }
+        .text-blue-500 {
+            color: #4a90e2; /* 하늘색 계열 */
+        }
+        .text-blue-500:hover {
+            color: #1e78c6; /* 진한 하늘색 계열 */
+        }
+        .bg-green-500 {
+            background-color: #38a169; /* 초록색 계열 */
+        }
+        .bg-green-500:hover {
+            background-color: #2f855a; /* 진한 초록색 계열 */
+        }
+        .text-green-500 {
+            color: #38a169; /* 초록색 계열 */
+        }
+        .text-green-500:hover {
+            color: #2f855a; /* 진한 초록색 계열 */
+        }
+        .font-bold {
+            font-weight: 700; /* 굵은 글꼴 */
+        }
+        header:hover {
+            background-color: #0d68a3; /* 마우스를 가져갔을 때의 배경색 */
+        }
+        /* 추가된 부분 */
+        section.grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        section.grid div {
+            background-color: #fff; /* 흰색 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section.grid div:hover {
+            background-color: #f7fafc; /* 연한 회색 계열 */
+        }
+        section.grid h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4a90e2; /* 하늘색 계열 */
+        }
+        section.grid a {
+            color: #4a90e2; /* 하늘색 계열 */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        section.grid a:hover {
+            color: #1e78c6; /* 진한 하늘색 계열 */
+        }
+        body {
+            background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+        }
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-blue-200 py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <div class="flex items-center">
+                <h1 class="text-white text-xl font-bold mr-4 relative">
+                    <a href="/dashboard" class="text-4xl md:text-5xl">
+                      <span class="text-shadow">I44U</span>
+                    </a>
+                  </h1>
+                  
+                <span class="mr-8 text-white">information for you</span>
+            </div>
+
+            <!-- 검색 창 -->
+            <div class="flex items-center space-x-8">
+                <form action="/search_results" method="GET" class="flex items-center ml-auto">
+                    <label for="activity_type" class="mr-2 text-white">검색 필터:</label>
+                    <select id="activity_type" name="activity_type" class="mr-4">
+                        <option value="">-- All Activities --</option>
+                        <option value="Contest">공모전</option>
+                        <option value="Activity">대외활동</option>
+                        <option value="Career">취업/인턴</option>
+                        <option value="Campus">교내활동</option>
+                    </select>
+                    <input type="text" id="activity_name" name="activity_name" placeholder="검색" class="p-2 border border-blue-300 rounded">
+                </form>
+                <a href="/profile" class="mt-2 font-bold hover:text-blue-700" style="color: white;">나의 페이지</a>
+                <a href="/favorites" class="mt-2 font-bold hover:text-blue-700" style="color: white;">즐겨찾기</a>
+                <a href="/portfolio" class="mt-2 font-bold hover:text-blue-700" style="color: white;">나의 포트폴리오</a>
+                <a href="/logout" class="mt-2 font-bold hover:text-blue-700" style="color: white;">로그아웃</a>
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="container mx-auto px-4 py-8">
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h1 class="text-2xl font-bold text-center mb-4">{{ career.name }}</h1>
+                <p class="text-lg"><strong>회사:</strong> {{ career.company }}</p>
+                <p class="text-lg"><strong>위치:</strong> {{ career.location }}</p>
+                <p class="text-lg"><strong>시작일:</strong> {{ career.reg_date }}</p>
+                <p class="text-lg"><strong>종료일:</strong> {{ career.deadline }}</p>
+                <p class="text-lg"><strong>경력조건:</strong> {{ career.experience }}</p>
+                <p class="text-lg"><strong>채용조건:</strong> {{ career.jobtype }}</p>
+                <p class="text-lg"><strong>분야:</strong> {{ career.category }}</p>
+                <p class="text-lg"><strong>세부사항:</strong> <a href="{{ career.url }}" class="text-blue-500 hover:underline">바로가기</a></p>
+                
+                <div class="flex justify-between items-center mt-8">
+                    <form action="{{ url_for('add_careers_to_favorites', career_id=career.id) }}" method="post">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> 
+                            즐겨찾기에 추가
+                        </button>
+                    </form>
+
+                    <form action="{{ url_for('add_careers_to_portfolio', career_id=career.id) }}" method="post">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> 
+                            포트폴리오에 추가
+                        </button>
+                    </form>
+
+                    <form action="{{ url_for('add_team_recruitment') }}" method="get">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> 
+                            팀 만들기
+                        </button>
+                    </form>
+
+                    <button class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
+                       <a href="{{ url_for('dashboard') }}">돌아가기</a> 
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

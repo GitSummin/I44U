@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I44U</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .container a{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .profile-info {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .link {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 16px;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .link:hover {
+            background-color: #1e78c6;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        header {
+            background-color: #0d68a3; /* 하늘색 계열 */
+        }
+        header .text-white {
+            color: #fff; /* 흰색 */
+        }
+        .bg-gray-200 {
+            background-color: #f7fafc; /* 연한 회색 계열 */
+        }
+        .card {
+            background-color: #fff; /* 흰색 */
+        }
+        .card:hover {
+            background-color: #f7fafc; /* 연한 회색 계열 */
+        }
+        .bg-blue-200 {
+            background-color: #4a90e2; /* 하늘색 계열 */
+        }
+        .bg-blue-200:hover {
+            background-color: #1e78c6; /* 진한 하늘색 계열 */
+        }
+        .text-blue-500 {
+            color: #4a90e2; /* 하늘색 계열 */
+        }
+        .text-blue-500:hover {
+            color: #1e78c6; /* 진한 하늘색 계열 */
+        }
+        .bg-green-500 {
+            background-color: #38a169; /* 초록색 계열 */
+        }
+        .bg-green-500:hover {
+            background-color: #2f855a; /* 진한 초록색 계열 */
+        }
+        .text-green-500 {
+            color: #38a169; /* 초록색 계열 */
+        }
+        .text-green-500:hover {
+            color: #2f855a; /* 진한 초록색 계열 */
+        }
+        .font-bold {
+            font-weight: 700; /* 굵은 글꼴 */
+        }
+        header:hover {
+            background-color: #0d68a3; /* 마우스를 가져갔을 때의 배경색 */
+        }
+        /* 추가된 부분 */
+        section.grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        section.grid div {
+            background-color: #fff; /* 흰색 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section.grid div:hover {
+            background-color: #f7fafc; /* 연한 회색 계열 */
+        }
+        section.grid h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #000000; /* 하늘색 계열 */
+        }
+        section.grid a {
+            color: #4a90e2; /* 하늘색 계열 */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        section.grid a:hover {
+            color: #000000; /* 진한 하늘색 계열 */
+        }
+        body {
+            background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+    <header class="bg-blue-200 py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <div class="flex items-center">
+                <h1 class="text-white text-xl font-bold mr-4 relative">
+                    <a href="/dashboard" class="text-4xl md:text-5xl">
+                      <span class="text-shadow">I44U</span>
+                    </a>
+                  </h1>
+                  
+                <span class="mr-8 text-white">information for you</span>
+            </div>
+
+            <!-- 검색 창 -->
+            <div class="flex items-center space-x-8">
+                <form action="/search_results" method="GET" class="flex items-center ml-auto">
+                    <label for="activity_type" class="mr-2 text-white">검색 필터:</label>
+                    <select id="activity_type" name="activity_type" class="mr-4">
+                        <option value="">-- All Activities --</option>
+                        <option value="Contest">공모전</option>
+                        <option value="Activity">대외활동</option>
+                        <option value="Career">취업/인턴</option>
+                        <option value="Campus">교내활동</option>
+                    </select>
+                    <input type="text" id="activity_name" name="activity_name" placeholder="검색" class="p-2 border border-blue-300 rounded">
+                </form>
+                <a href="/profile" class="mt-2 font-bold hover:text-blue-700" style="color: white;">나의 페이지</a>
+                <a href="/favorites" class="mt-2 font-bold hover:text-blue-700" style="color: white;">즐겨찾기</a>
+                <a href="/portfolio" class="mt-2 font-bold hover:text-blue-700" style="color: white;">나의 포트폴리오</a>
+                <a href="/logout" class="mt-2 font-bold hover:text-blue-700" style="color: white;">로그아웃</a>
+                
+            </div>
+        </div>
+    </header>
+
+
+
+    <h1 class="text-4xl font-bold text-center text-white my-8">전체 대외활동 목록</h1> 
+
+    <div class="container mx-auto px-4 py-4 button-container">
+        <a href="/activities?sort_by=views" class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded text-lg">조회순</a>
+        <a href="/activities?sort_by=date" class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded text-lg">마감일순</a>
+        <a href="/activities?sort_by=latest" class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded text-lg">최신순</a>
+    </div>
+
+    {% for activity in activities %}
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-center mb-4"><a href="/activity/{{ activity.id }}">{{activity.name }}</a></h2>
+            <p class="text-lg"><strong>주최:</strong> {{ activity.host }}</p>
+            <p class="text-lg"><strong>주관:</strong> {{ activity.organizer }}</p>
+            <p class="text-lg"><strong>활동기간:</strong> {{ activity.date }}</p>
+            <p class="text-lg"><strong>분야:</strong> {{ activity.type }}</p>
+            <p class="text-lg"><strong>대상:</strong>  {{ activity.target }}</p>
+            <p class="text-lg"><strong>혜택:</strong> {{ activity.profit }}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Pagination -->
+    <div class="container mx-auto px-4 py-8 flex justify-center">
+        <div class="flex">
+            <!-- Previous Page Link -->
+            {% if page > 1 %}
+                <a href="/activities?page={{ page - 1 }}" class="mr-4 text-blue-500 hover:underline">이전</a>
+            {% endif %}
+            
+            <!-- First Page Link -->
+            <a href="/activities?page=1" class="mr-4 {% if page == 1 %}font-bold{% endif %}">1</a>
+
+            <!-- Dots if there are skipped pages before current page range -->
+            {% if page > 3 %}
+                <span class="mr-4">...</span>
+            {% endif %}
+
+            <!-- Page Numbers; dynamic range around current page -->
+            {% set start_page = [page - 2, 2]|max %}
+            {% set end_page = [page + 2, total_pages]|min %}
+            {% for p in range(start_page, end_page + 1) %}
+                <a href="/activities?page={{ p }}" class="mr-4 {% if p == page %}font-bold{% endif %}">{{ p }}</a>
+            {% endfor %}
+
+            <!-- Dots if there are skipped pages after current page range -->
+            {% if page + 2 < total_pages %}
+                <span class="mr-4">...</span>
+            {% endif %}
+
+            <!-- Last Page Link -->
+            {% if total_pages > 1 and total_pages != page %}
+                <a href="/activities?page={{ total_pages }}" class="mr-4 {% if page == total_pages %}font-bold{% endif %}">{{ total_pages }}</a>
+            {% endif %}
+
+            <!-- Next Page Link -->
+            {% if page < total_pages %}
+                <a href="/activities?page={{ page + 1 }}" class="mr-4 text-blue-500 hover:underline">다음</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+</body>
+</html>
