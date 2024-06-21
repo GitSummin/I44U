@@ -56,32 +56,32 @@ project/
 
 ### 가상 환경 설정
 1. 프로젝트를 클론합니다.
-
+```plaintext
 git clone https://github.com/yourusername/yourproject.git
 cd yourproject
-
+```
 2. 가상 환경을 생성하고 활성화합니다.
-
+```plaintext
 python -m venv venv
 source venv/bin/activate   # macOS/Linux
 venv\Scripts\activate      # Windows
-
+```
 ## 데이터베이스 설정
 
 1. instance 폴더 내의 app_database.db 파일을 확인합니다.
 
 2. 필요한 경우 데이터베이스를 초기화합니다.
-
+```plaintext
 flask db init
 flask db migrate -m "Initial migration."
 flask db upgrade
-
+```
 ## 어플리케이션 실행
 
 1. 어플리케이션을 실행합니다.
-
+```plaintext
 python app.py
-
+```
 2. 웹 브라우저를 열고 http://localhost:5000 에 접속합니다.
 
 # 스크린샷 및 데모
